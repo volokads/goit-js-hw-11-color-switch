@@ -10,9 +10,6 @@ const colors = [
   '#795548',
 ];
 
-// const promises = colors.map(colorSwitch)
-// console.log(promises);
-// body.style.backgroundColor = "#009688"
 
 const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -37,8 +34,7 @@ function colorSwitch  ()  {
     }, 1000);
    }
 colorSwitch()
-// .then(x => console.log(x))
-  // .catch(e => console.log(e))
+
 console.log(colorSwitch);
 console.log(body);
 
