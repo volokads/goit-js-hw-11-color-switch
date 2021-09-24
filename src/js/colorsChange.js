@@ -1,5 +1,5 @@
 import refs from './refs.js'
-const { startButton, closeButton, body} = refs
+const { startButton, closeButton} = refs
 
 const colors = [
   '#FFFFFF',
@@ -10,38 +10,26 @@ const colors = [
   '#795548',
 ];
 
+startButton.addEventListener('click', colorSwitcherStart)
+closeButton.addEventListener('click', colorSwitherStop)
 
-const randomIntegerFromInterval = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
+let colorInterval = null
 
-const colorsLengh = randomIntegerFromInterval(0, 5)
+function colorSwitcherStart() {
+  colorInterval = setInterval(colorSwitch, 1000)
+  startButton.setAttribute('disabled', 'true')
+}
 
-startButton.addEventListener('click', (colorSwitch) => {
-  body.style.backgroundColor = "colorSwitch"
-})
-
+function colorSwitherStop() {
+  clearInterval(colorInterval)
+  refs.startButton.removeAttribute('disabled')
+}
 
 function colorSwitch  ()  {
-    setInterval(() => {
-      // console.log(color);
-      const randomIntegerFromInterval = (min, max) => {
+  const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
-      const colorsLengh = randomIntegerFromInterval(0, 5)
-      // console.log(colors[`${colorsLengh}`]); 
-      
-    }, 1000);
-   }
-colorSwitch()
-
-console.log(colorSwitch);
-console.log(body);
-
-
-console.log(startButton);
-closeButton.addEventListener('click', () => {
-  body.style.backgroundColor = "#fff"
-})
-
+  const index = randomIntegerFromInterval(0, colors.length - 1);
+    document.body.style.background = colors[index]
+}
 
